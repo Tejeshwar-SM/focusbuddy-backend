@@ -3,4 +3,4 @@
 Procfile
 *.log
 *.env
-.ebextensions
+.ebextensions/
