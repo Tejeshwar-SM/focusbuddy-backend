@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 
-// Ensure environment variables are loaded
 const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
 const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 
@@ -8,7 +7,7 @@ if (!ACCESS_SECRET || !REFRESH_SECRET) {
   console.error("JWT secrets not found in environment variables!");
 }
 
-//access token- short lived
+
 export const generateAccessToken = (userId: string): string => {
   if (!ACCESS_SECRET) {
     throw new Error("JWT_ACCESS_SECRET is not defined in environment variables");
@@ -19,7 +18,6 @@ export const generateAccessToken = (userId: string): string => {
   });
 };
 
-//refresh token- long lived
 export const generateRefreshToken = (userId: string): string => {
   if (!REFRESH_SECRET) {
     throw new Error("JWT_REFRESH_SECRET is not defined in environment variables");
@@ -30,7 +28,7 @@ export const generateRefreshToken = (userId: string): string => {
   });
 };
 
-// Verify refresh token
+
 export const verifyRefreshToken = (token: string): { id: string } | null => {
   try {
     if (!REFRESH_SECRET) {
@@ -49,7 +47,7 @@ export const verifyRefreshToken = (token: string): { id: string } | null => {
   }
 };
 
-// Verify access token (useful for utility functions)
+// Verify access token 
 export const verifyAccessToken = (token: string): { id: string } | null => {
   try {
     if (!ACCESS_SECRET) {
