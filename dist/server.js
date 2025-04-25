@@ -20,6 +20,7 @@ const JournalRoutes_1 = __importDefault(require("./routes/JournalRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 8081 // AWS EB default port;
 // Create HTTP server
 const server = http_1.default.createServer(app);
 // Initialize Socket.IO
@@ -29,6 +30,9 @@ const io = new socket_io_1.Server(server, {
         methods: ["GET", "POST"],
         credentials: true,
     },
+    // //settings for AWS EB
+    // transports: ["websocket", "polling"],
+    // pingTimeout: 60000,
 });
 exports.io = io;
 // middleware

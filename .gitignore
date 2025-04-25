@@ -1,6 +1,3 @@
-.ebextensions/nodecommand.config
-.ebextensions/websocket.config
 Procfile
-*.log
-*.env
-.ebextensions/
+node_modules
+.ebextensions
